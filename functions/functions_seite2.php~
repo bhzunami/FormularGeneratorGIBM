@@ -1,0 +1,93 @@
+ <?php
+include 'connection.php';
+
+//function insertGeneralInfo($title ,$name, $benutzerName, $passwort, $email){
+	//$connection = true;
+	
+	
+  $sql2 = 'SELECT
+    		id
+    	FROM
+    		formular
+    	WHERE 
+    		name like "'.$name.'"
+    	AND userName like "'.$benutzerName.'"
+    	AND password like "'.$passwort.'"';
+    	$result = $db->query($sql2);
+    	if (!$result->num_rows) {
+	    echo 'Keine ID';
+		} else {
+    		while ($row = $result->fetch_assoc()) {
+        	$id = $row['id'];
+      	 }
+      }
+	if($id == NULL) {
+	$sql = 'INSERT INTO
+                formular(title, name, userName, password, email)
+            VALUES
+                (?, ?, ?, ?, ?)';
+    $stmt = $db ->prepare($sql);  //$stmt = $db->prepare($sql);
+    if (!$stmt) {
+        die ('Es konnte kein SQL-Query vorbereitet werden: '.$db->error);
+    }
+     $stmt->bind_param('sssss', $title ,$name, $benutzerName, $passwort, $email);
+    if (!$stmt->execute()) {
+        die ('Query konnte nicht ausgeführt werden: '.$stmt->error);
+        $connection = false;
+    }
+    $connection = true;
+ 	$connection = $_SESSION['connection'];
+ 	
+ 	$sql = 'INSERT INTO
+		formularWerte(formularId, name, feldArt, duty, werte)
+	VALUES
+		(?, ?, ?, ?, ?)';
+	$stmt = $db->prepare($sql);
+	if (!$stmt) {
+		die ('Es konnte kein SQL-Query vorbereitet werden: '.$db->error);
+	}
+	$stmt->bind_param('isiis', $id, $field, $feldArt[$i], $erforderlich[$i],$werte[$i] );
+if (!$stmt->execute()) {
+	die ('Query konnte nicht ausgeführt werden: '.$stmt->error);
+}
+
+//}
+}
+
+//function getId($name, $benutzerName, $passwort) {
+	  $sql2 = 'SELECT
+    		id
+    	FROM
+    		formular
+    	WHERE 
+    		name like "'.$name.'"
+    	AND userName like "'.$benutzerName.'"
+    	AND password like "'.$passwort.'"';
+    	$result = $db->query($sql2);
+    	if (!$result->num_rows) {
+	    echo 'Keine ID';
+		} else {
+    		while ($row = $result->fetch_assoc()) {
+       	$id = $row['id'];
+      	 }
+      }
+  //    return $id;
+//}
+
+/*function insertFormular($id, $field, $feldArt[$i], $erforderlich[$i],$werte[$i]) {
+
+	$sql = 'INSERT INTO
+		formularWerte(formularId, name, feldArt, duty, werte)
+		VALUES
+		(?, ?, ?, ?, ?)';
+	$stmt = $db->prepare($sql);
+	if (!$stmt) {
+		die ('Es konnte kein SQL-Query vorbereitet werden: '.$db->error);
+	}
+	$stmt->bind_param('isiis', $id, $field, $feldArt[$i], $erforderlich[$i],$werte[$i] );
+	if (!$stmt->execute()) {
+		die ('Query konnte nicht ausgeführt werden: '.$stmt->error);
+	}
+
+}*/
+?>

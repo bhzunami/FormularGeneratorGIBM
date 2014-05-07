@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Formular Generator</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+    <!--JavaScript:
+    		Zeigt die Hilfe an, wenn man über das
+    		Info-Icon geht -->
+    <script type="text/javascript">
+      function einblenden(elementname) {
+        document.getElementById(elementname).style.display='block';
+      }
+      function ausblenden(elementname) {
+        document.getElementById(elementname).style.display='none';
+      }
+    </script>
+  </head>
+
+  <body>
+  <div id="position">
+	 Schritte : <strong>1</strong> - 2 - 3
+  	</div>
+  	
+    <form action="seite2.php" method="post">
+      <h1>Formular Generator v0.2 </h1>
+      <h2>General Information</h2>
+      <br />
+      <table border="0" cellpadding="0" cellspacing="4">
+			<tr>
+			  <td align="left">Name des Formular:</td>
+			  <td><input name="name_of_formular" type="text" size="30" maxlength="30"></td>
+			  <td><img src="images/info.jpg" name="img1" border="0" width="20" 
+				 height="20" onmouseover="einblenden('name')" alt="Info" onmouseout="ausblenden('name')" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			  <td align="left">Titel des Formular:</td>
+			  <td><input name="title_of_formular" type="text" size="30" maxlength="30"></td>
+			  <td><img src="images/info.jpg" name="img1" border="0" width="20" 
+			 height="20" onmouseover="einblenden('titel')" alt="Info" onmouseout="ausblenden('titel')" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			  <td align="left">Anzahl mögliche Felder:</td>
+			  <td><input name="count_of_formular" type="text" size="3" maxlength="10"></td>
+	 		 <td><img src="images/info.jpg" name="img1" border="0" width="20" 
+			 height="20" onmouseover="einblenden('number')" alt="Info" onmouseout="ausblenden('number')" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td>
+				<h2>Benutzerdaten</h2>
+				</td>
+				<td><img src="images/info.jpg" name="img1" border="0" width="20" 
+			 height="20" onmouseover="einblenden('benutzer')" alt="Info" onmouseout="ausblenden('benutzer')" />
+			  <input type="checkbox" name="inDatabase" value="inDatabase"> Verwende Datenbank<br>
+			 </td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			  <td align="left">Benutzername:</td>
+			  <td><input name="benutzerName_of_formular" type="text" size="30" maxlength="30"></td>
+			  <td><img src="images/info.jpg" name="img1" border="0" width="20" 
+			 height="20" onmouseover="einblenden('benutzerName')" alt="Info" onmouseout="ausblenden('benutzerName')" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			  <td align="left">Passwort:</td>
+			  <td><input name="passwort_of_formular" type="password" size="30" maxlength="30"></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			  <td align="left">E-Mail Adresse:</td>
+			  <td><input name="email_of_formular" type="text" size="30" maxlength="30"></td>
+			  <td><img src="images/info.jpg" name="img1" border="0" width="20" 
+			 height="20" onmouseover="einblenden('email')" alt="Info" onmouseout="ausblenden('email')" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td></td>
+	 		 	<td align="right"><input type="submit" name="next" maxlength="80" value="Zum nächsten Schritt" /></td>
+			</tr>
+   	</table>
+   	<!--Hilfe Text in den Divs -->
+	  	<div id="name" style="display: none">
+	   	   Name für die Datei, wenn das Formular abgespeichert wird.
+		</div> 
+		<div id="titel" style="display: none">
+	      	Wie soll das Formular heissen
+		</div>
+		<div id="email" style="display: none">
+	      	E-Mail Adresse, an die das Formular versendet werden soll.
+		</div>
+		<div id="number" style="display: none">
+	      	Wie viele Felder hat das Formular <br/>
+	      	Es können später noch mehr hinzugefügt werden.
+		</div>
+		<div id="benutzer" style="display: none">
+	      	Falls das Formular in eine Datenbank gespeichert werden soll<br/>
+	      	bruacht es einen Benutzer.
+		</div>
+		<div id="benutzerName" style="display: none">
+	      	Einen Benutzernamen der später zum Einloggen gebraucht wird.
+		</div>
+    </form>
+   </body>
+</html>

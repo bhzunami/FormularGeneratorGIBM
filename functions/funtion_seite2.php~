@@ -1,0 +1,31 @@
+ <?php
+$sql = 'INSERT INTO
+                formular(title, name, userName, password)
+            VALUES
+                (?, ?, ?, ?)';
+    $stmt = $db->prepare($sql);
+    if (!$stmt) {
+        die ('Es konnte kein SQL-Query vorbereitet werden: '.$db->error);
+    }
+     $stmt->bind_param('ssss', $title ,$name, $benutzerName, $passwort);
+    if (!$stmt->execute()) {
+        die ('Query konnte nicht ausgeführt werden: '.$stmt->error);
+    }
+      // get ID for later
+    $sql2 = 'SELECT
+    		id
+    	FROM
+    		formular
+    	WHERE 
+    		name like "'.$name.'"
+    	AND userName like "'.$benutzerName.'"
+    	AND password like "'.$passwort.'"';
+    	$result = $db->query($sql2);
+    	if (!$result->num_rows) {
+	    echo 'Keine ID';
+		} else {
+    		while ($row = $result->fetch_assoc()) {
+        	$id = $row['id'];
+      	 }
+      }
+?>
